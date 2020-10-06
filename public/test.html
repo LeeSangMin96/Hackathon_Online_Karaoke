@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>WebRtc tutorial</title>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <p>시작 가호</p>
+    <script>
+        var tag = document.getElementsByTagName("p")[0];
+        var text = tag.innerHTML;
+        
+//        $.ajax({
+//             type: "POST",
+//             url: "~/mytube.py",
+//             data: { param: text}
+//        }).done(function( o ) {
+//              // do something
+//            console.log(data);
+//        });
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "mytube.py?text=" + text, true);
+        xhr.responseType = "JSON";
+        xhr.onload = function(e) {
+             var arrOfStrings = JSON.parse(xhr.response);
+            console.log(arrOfStrings)
+        }
+        xhr.send();
+    </script>
+    
+</body>
+
+</html>

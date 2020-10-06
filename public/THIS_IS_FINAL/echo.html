@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ONLINE SING</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel='icon' href="/THIS_IS_FINAL/images/favicon.ico"/>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<script>
+		var bDisplay=false;
+		window.onload=function(){
+
+			var h=document.getElementById('hidBtn');
+			var op=document.getElementById('openBtn');
+			var pp=document.getElementById('myDIV');
+
+			h.onclick=function(){
+				pp.style.display='none';
+                $.ajax({
+//                        url:'../get_url',
+                        url: 'http://127.0.0.1:8000/stop',
+                        type:"POST",
+                        data:{'send':'stop'},
+                        dataType : "json",
+                        success: function(result) {
+                            if (result) {
+                                // console.log(result.tts_url);
+
+                                console.log(result.result);
+                                
+                            } else {
+                                alert("stop 실패");
+                            }
+                        }
+                    });
+                
+			}
+			op.onclick=function(){
+				pp.style.display='block';
+                $.ajax({
+//                        url:'../get_url',
+                        url: 'http://127.0.0.1:8000/karaoke',
+                        type:"POST",
+                        data:{'send':'start'},
+                        dataType : "json",
+                        success: function(result) {
+                            if (result) {
+                                // console.log(result.tts_url);
+
+                                console.log(result.result);
+                                
+                            } else {
+                                alert("start 실패");
+                            }
+                        }
+                    });
+			}
+		}
+	</script>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+					<header id="header">
+
+					</header>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Posts -->
+							<section class="post">
+                                <header class="major">
+									<h2>ECHO CONTROLLER</h2>
+									<hr/>
+								</header>
+                                <section>
+									<section>
+										<h3>
+											<i class="fas fa-check"></i>
+											에코를 사용하시겠습니까?</h3>
+											<div class="row">
+												<div class="col-6 col-12-small">
+													<ul class="actions stacked">
+														<li><button id="openBtn" class="button primary fit">ON</button></li>
+													</ul>
+												</div>
+												<div class="col-6 col-12-small">
+													<ul class="actions stacked">
+														<li><button id="hidBtn" class="button fit">OFF</button></li>
+													</ul>
+												</div>
+											</div>
+										
+									</section>
+
+									<br/><br/>
+									<div id="myDIV" style="display:none;">
+										<h3><i class="fas fa-check"></i>
+											Move the bar</h3>
+										<form method="post" action="#">
+											<div class="fields">
+												<div class="field">
+													<label for="explain">DELAY_INTERVAL</label>
+													<input type="range" id="delay_interval" class="slider" value="0" min="0" max="30"/>
+												</div>
+												<div class="field">
+													<label for="explain">DELAY_VOLUME_DECAY</label>
+													<input type="range" id="delay_volume_decay" class="slider" value="0" min="0" max="10"/>
+												</div>
+												<div class="field">
+													<label for="explain">DELAY_NUM</label>
+													<input type="range" id="delay_num" class="slider" value="0" min="0" max="15"/>
+												</div>
+											</div>
+											<ul class="actions">
+												<li><input type="submit" class="button primary" value="ENTER" /></li>
+											</ul>
+									</div>
+									</form>
+                                </section>
+                            
+							</section>
+
+
+					</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul>by 장화신은 고양이</ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script>
+                $('#delay_interval').bind('change', (e) => {
+                    console.log(document.querySelector('#delay_interval').value);
+                    var delay_interval = document.querySelector('#delay_interval').value;
+                    $.ajax({
+//                        url:'../get_url',
+                        url: 'http://127.0.0.1:8000/set_delay_interval',
+                        type:"POST",
+                        data:{'val':delay_interval},
+                        dataType : "json",
+                        success: function(result) {
+                            if (result) {
+                                // console.log(result.tts_url);
+
+                                console.log(result.result);
+                                
+                            } else {
+                                alert("start 실패");
+                            }
+                        }
+                    });
+                });
+                
+                $('#delay_volume_decay').bind('change', (e) => {
+                    console.log(document.querySelector('#delay_volume_decay').value/10);
+                    var delay_volume_decay = document.querySelector('#delay_volume_decay').value/10;
+                    $.ajax({
+//                        url:'../get_url',
+                        url: 'http://127.0.0.1:8000/set_delay_volume_decay',
+                        type:"POST",
+                        data:{'val':delay_volume_decay},
+                        dataType : "json",
+                        success: function(result) {
+                            if (result) {
+                                // console.log(result.tts_url);
+
+                                console.log(result.result);
+                                
+                            } else {
+                                alert("start 실패");
+                            }
+                        }
+                    });
+                });
+                
+                $('#delay_num').bind('change', (e) => {
+                    console.log(document.querySelector('#delay_num').value);
+                    var delay_num = document.querySelector('#delay_num').value;
+                    $.ajax({
+//                        url:'../get_url',
+                        url: 'http://127.0.0.1:8000/set_delay_num',
+                        type:"POST",
+                        data:{'val':delay_num},
+                        dataType : "json",
+                        success: function(result) {
+                            if (result) {
+                                // console.log(result.tts_url);
+
+                                console.log(result.result);
+                                
+                            } else {
+                                alert("start 실패");
+                            }
+                        }
+                    });
+                });
+                
+                
+            </script>
+
+	</body>
+</html>
