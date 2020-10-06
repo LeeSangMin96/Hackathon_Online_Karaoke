@@ -1,7 +1,7 @@
 # Hackathon_Online_Karaoke
 > 집에서 안전하게 즐길수 있는 온라인 노래방 서비스 
 
-### SUBJECT
+## SUBJECT
 * 마이크 에코기능 만들기
 * 유튜브 크롤링을 통해 MR가져오기
 * 혼자 부르기 기능
