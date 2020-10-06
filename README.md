@@ -11,4 +11,4 @@
 <br/>
 <br/>
 <br/>
-#### 발표영상 <a href="https://github.com/LeeSangMin96/Hackathon_Online_Karaoke/blob/master/%EB%B0%9C%ED%91%9C%EC%98%81%EC%83%81.mp4">[CLICK]</a>
+* 발표영상 <a href="https://github.com/LeeSangMin96/Hackathon_Online_Karaoke/blob/master/%EB%B0%9C%ED%91%9C%EC%98%81%EC%83%81.mp4">[CLICK]</a>
