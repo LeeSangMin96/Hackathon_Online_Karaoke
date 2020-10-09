@@ -1,5 +1,3 @@
-# 자료는 request와 response 의 개념 학습용으로만 사용하시고, 악용하지마세요 !!!
-# 악용 시의 책임을 지지 않습니다..
 
 import requests
 import sys, json, numpy as np
