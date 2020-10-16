@@ -14,7 +14,7 @@
 * 다른 사람과 같이 부르기 기능
 * 대결하기 기능
 * 웹으로 구현 (webrct사용)
-* nodejs,django 이용하여 
+* nodejs/django 이용하여 서버구현
 <br/>
 <br/>
 <br/>
